@@ -7,8 +7,11 @@
     <meta name="author" content="Healthcare Digital Innovation Team">
     
     <title>Hospital AI Analytics & Mapping Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Sarabun) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
@@ -21,8 +24,9 @@
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col transition-colors duration-200">
 
+    <!-- HEADER BAR -->
     <header class="bg-gradient-to-r from-indigo-900 via-blue-800 to-slate-900 text-white shadow-lg sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
@@ -40,15 +44,17 @@
                     <i class="fa-brands fa-github text-sm"></i>
                     <span>View on GitHub</span>
                 </a>
-                <button onclick="toggleDarkMode()" id="darkModeBtn" class="bg-white/10 hover:bg-white/20 p-2 rounded-full transition border border-white/10">
+                <button onclick="toggleDarkMode()" id="darkModeBtn" class="bg-white/10 hover:bg-white/20 p-2 rounded-full transition border border-white/10" title="สลับโหมดแสง/มืด">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </header>
 
+    <!-- MAIN CONTENT CONTAINER -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 w-full flex flex-col gap-6">
         
+        <!-- KPI SUMMARIES -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between">
                 <div>
@@ -80,7 +86,9 @@
             </div>
         </div>
 
+        <!-- NEW AUTOMATED STRATEGIC INSIGHTS & GAP ANALYSIS PANEL -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Strategic Balance Analysis -->
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 lg:col-span-2 flex flex-col justify-between">
                 <div>
                     <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 mb-3">
@@ -89,12 +97,15 @@
                     <p class="text-xs text-slate-500 mb-4">วิเคราะห์ความสมดุลของการกระจายเทคโนโลยี เพื่อป้องกันปัญหาการลงทุนเอียงไปด้านใดด้านหนึ่งมากเกินไป</p>
                     
                     <div class="space-y-3" id="gapAnalysisBars">
-                        </div>
-                </div>
-                <div id="strategicAdviceBox" class="mt-4 p-3 rounded-xl text-xs leading-relaxed">
+                        <!-- Progress bars rendered dynamically -->
                     </div>
+                </div>
+                <div id="strategicAdviceBox" class="mt-4 p-3 rounded-xl text-xs leading-relaxed transition-colors duration-200">
+                    <!-- Dynamic Recommendation text based on data -->
+                </div>
             </div>
 
+            <!-- Technology Keywords Trend Cloud -->
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-between">
                 <div>
                     <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 mb-2">
@@ -103,7 +114,8 @@
                     <p class="text-xs text-slate-500 mb-4">กลุ่มคำเทคโนโลยีหลักที่บุคลากรต้องการให้เกิดขึ้นในองค์กรมากที่สุด</p>
                     
                     <div class="flex flex-wrap gap-2 pt-2" id="keywordCloudContainer">
-                        </div>
+                        <!-- Dynamic Keyword Badges -->
+                    </div>
                 </div>
                 <div class="text-[11px] text-slate-400 border-t border-slate-100 pt-3 mt-4">
                     * ค้นพบความต้องการระบบอัตโนมัติ (Automation) และบริการผ่านสมาร์ทโฟนสูงขึ้นอย่างมีนัยสำคัญ
@@ -111,18 +123,22 @@
             </div>
         </div>
 
+        <!-- SEARCH & INTERACTIVE WORKSPACE -->
         <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex flex-col lg:flex-row gap-4 items-center">
             <div class="relative w-full lg:w-72">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
-                <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="ค้นหาชื่อระบบ/คำสำคัญกลยุทธ์..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="ค้นหาชื่อระบบ/คำสำคัญกลยุทธ์..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition bg-transparent">
             </div>
             <div class="flex flex-wrap gap-1.5 items-center justify-start w-full overflow-x-auto pb-1 lg:pb-0" id="groupFilterContainer">
-                </div>
+                <!-- Generated dynamically -->
+            </div>
         </div>
 
+        <!-- INTERACTIVE CANVAS & LIVE CARD -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <!-- THE 2x2 CANVAS MATRIX -->
             <div class="lg:col-span-7 bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex flex-col justify-between">
                 <div class="border-b border-slate-100 pb-3 mb-4 flex justify-between items-center">
                     <h3 class="font-bold text-slate-800 flex items-center gap-2 text-sm">
@@ -139,6 +155,7 @@
                         <div class="bg-amber-50/10"></div>
                     </div>
 
+                    <!-- AXIS LABELS -->
                     <div class="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 origin-left text-[10px] font-bold text-indigo-950 bg-white/90 px-2 py-0.5 rounded shadow-sm z-10">
                         ↑ ผลกระทบต่อการรักษา (Impact on Care)
                     </div>
@@ -158,7 +175,9 @@
                 </div>
             </div>
 
+            <!-- SYSTEM DETAILS & SUGGESTED ACTION ROADMAP -->
             <div class="lg:col-span-5 flex flex-col gap-6">
+                <!-- LIVE PREVIEW CARD -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-between min-h-[180px]" id="detailDisplayPanel">
                     <div>
                         <div class="flex flex-wrap items-center gap-1.5 mb-2">
@@ -173,6 +192,7 @@
                     </div>
                 </div>
 
+                <!-- TOP CONSENSUS & OVERLAPPING IDEAS -->
                 <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex-grow flex flex-col">
                     <h3 class="font-bold text-slate-800 pb-2 text-sm border-b border-slate-100 flex items-center gap-2">
                         <i class="fa-solid fa-star text-amber-500"></i> 3. Strategic Synergy (ระบบที่มีความต้องการพ้องร่วมกันสูง)
@@ -182,6 +202,7 @@
             </div>
         </div>
 
+        <!-- FULL LIST DATA DIRECTORY -->
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
             <h3 class="font-bold text-slate-800 flex items-center gap-2 mb-4 text-base">
                 <i class="fa-solid fa-list-check text-indigo-600"></i> 4. ทำเนียบและแผนการจำแนกข้อมูลระบบเทคโนโลยีทั้งหมด
@@ -292,9 +313,9 @@
                     <div>
                         <div class="flex justify-between text-xs font-medium mb-1">
                             <span>${quadNames[key]} (${count} ระบบ)</span>
-                            <span class="font-bold text-slate-700">${percentage}%</span>
+                            <span class="font-bold text-slate-700 dark:text-slate-200">${percentage}%</span>
                         </div>
-                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div class="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
                             <div class="${colors[key]} h-full" style="width: ${percentage}%"></div>
                         </div>
                     </div>
@@ -304,10 +325,10 @@
             // B. Automated Advice Logic Based on Data Shape
             const adviceBox = document.getElementById('strategicAdviceBox');
             if(totals.high_front > totals.high_back) {
-                adviceBox.className += " bg-blue-50 text-blue-800 border-l-4 border-blue-500";
+                adviceBox.className = "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-blue-50 text-blue-800 border-l-4 border-blue-500";
                 adviceBox.innerHTML = `<strong>💡 บทวิเคราะห์เชิงยุทธศาสตร์:</strong> โฟกัสหลักของโรงพยาบาลในขณะนี้มุ่งเน้นไปที่ <u>ระบบด่านหน้าที่ส่งผลต่อคนไข้ (Frontline Impact)</u> ซึ่งดีต่อความพึงพอใจ แนะนำให้เพิ่มระบบความปลอดภัยหลังบ้าน (Clinical Back-office AI) ควบคู่ไปด้วยเพื่อความสมดุลระยะยาว`;
             } else {
-                adviceBox.className += " bg-emerald-50 text-emerald-800 border-l-4 border-emerald-500";
+                adviceBox.className = "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-emerald-50 text-emerald-800 border-l-4 border-emerald-500";
                 adviceBox.innerHTML = `<strong>💡 บทวิเคราะห์เชิงยุทธศาสตร์:</strong> มีสัดส่วนของโครงสร้างพื้นฐานและการวินิจฉัยแพทย์หลังบ้านสูงมาก มีความมั่นคงในมิติรักษาพยาบาล ควรเลือกนำระบบด่านหน้าประเภท Quick-wins (เช่น คีออส หรือ ไลน์แจ้งเตือน) มาเสริมเพื่อให้ผู้ป่วยสัมผัสได้ถึงการเปลี่ยนแปลงทันที`;
             }
 
@@ -317,7 +338,7 @@
             const cloudContainer = document.getElementById('keywordCloudContainer');
             cloudContainer.innerHTML = '';
 
-            keywords.forEach((word, index) => {
+            keywords.forEach((word) => {
                 const count = (textToAnalyze.match(new RegExp(word, "gi")) || []).length;
                 if(count > 0) {
                     const sizes = ['text-[10px] bg-slate-100 text-slate-600', 'text-xs bg-indigo-50 text-indigo-700 font-semibold', 'text-sm bg-blue-50 text-blue-700 font-bold'];
@@ -398,9 +419,9 @@
             consensusItems.forEach(item => {
                 const active = item.id === activeSelectedId;
                 list.innerHTML += `
-                    <div onclick="selectItem(${item.id})" class="p-2 text-xs cursor-pointer transition ${active ? 'bg-indigo-50 font-semibold text-indigo-900 border-l-2 border-indigo-500': 'hover:bg-slate-50'} flex justify-between items-center">
+                    <div onclick="selectItem(${item.id})" class="p-2 text-xs cursor-pointer transition ${active ? 'bg-indigo-50 font-semibold text-indigo-900 border-l-2 border-indigo-500 dark:bg-slate-700': 'hover:bg-slate-50 dark:hover:bg-slate-700/50'} flex justify-between items-center">
                         <div>
-                            <p class="text-slate-800">${item.name}</p>
+                            <p class="text-slate-800 dark:text-slate-100">${item.name}</p>
                             <span class="text-[9px] text-slate-400 font-normal">เสนอร่วม: ${item.groups.join(', ')}</span>
                         </div>
                         <span class="bg-amber-100 text-amber-800 text-[9px] px-1.5 py-0.5 rounded font-bold">${item.groups.length} กลุ่ม</span>
@@ -421,12 +442,12 @@
             items.forEach(item => {
                 const active = item.id === activeSelectedId;
                 tbody.innerHTML += `
-                    <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition cursor-pointer ${active ? 'bg-indigo-50/50' : ''}" onclick="selectItem(${item.id})">
-                        <td class="py-2.5 font-medium text-slate-900 flex items-center gap-1.5">
+                    <tr class="border-b border-slate-100 dark:border-slate-700 hover:bg-slate-50/80 dark:hover:bg-slate-700/50 transition cursor-pointer ${active ? 'bg-indigo-50/50 dark:bg-indigo-900/30' : ''}" onclick="selectItem(${item.id})">
+                        <td class="py-2.5 font-medium text-slate-900 dark:text-white flex items-center gap-1.5">
                             ${item.consensus ? '<i class="fa-solid fa-star text-amber-500"></i>': '<i class="fa-solid fa-circle text-[6px] text-slate-300"></i>'}
                             <span>${item.name}</span>
                         </td>
-                        <td class="py-2.5 text-slate-500">${quadNames[item.quadrant]}</td>
+                        <td class="py-2.5 text-slate-500 dark:text-slate-300">${quadNames[item.quadrant]}</td>
                         <td class="py-2.5 text-slate-400">${item.groups.join(', ')}</td>
                         <td class="py-2.5 text-center">
                             <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${item.quadrant.startsWith('high') ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-600'}">
@@ -457,7 +478,6 @@
                 ? `<span class="text-amber-600 font-bold"><i class="fa-solid fa-circle-check"></i> ระบบยุทธศาสตร์หลัก (ระดมสมองซ้ำกัน)</span>` 
                 : `<span class="text-slate-400">ไอเดียริเริ่มเฉพาะหน่วย</span>`;
 
-            // Refresh highlights without full layout calculation
             const filtered = getFilteredData();
             renderDots(filtered);
             renderConsensus(filtered);
