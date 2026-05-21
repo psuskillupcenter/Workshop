@@ -3,518 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta tags for GitHub Pages and SEO -->
-    <meta name="description" content="Hospital AI Mapping Canvas Dashboard - แดชบอร์ดสรุปผลกลยุทธ์การระดมสมองเทคโนโลยีและ AI โรงพยาบาล">
-    <meta name="keywords" content="Hospital AI, Medical Innovation, Healthcare Dashboard, GitHub Pages">
+    <meta name="description" content="Hospital AI Mapping Canvas & Advanced Analytics Dashboard">
     <meta name="author" content="Healthcare Digital Innovation Team">
     
-    <title>Hospital AI Mapping Canvas Dashboard - กลุ่มนวัตกรรมดิจิทัลทางการแพทย์</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Hospital AI Analytics & Mapping Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            font-family: 'Sarabun', sans-serif;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        body { font-family: 'Sarabun', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 transition-colors duration-200 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
-    <!-- HEADER BAR -->
-    <header class="bg-gradient-to-r from-blue-700 via-indigo-800 to-indigo-900 text-white shadow-lg border-b border-indigo-900 sticky top-0 z-40">
+    <header class="bg-gradient-to-r from-indigo-900 via-blue-800 to-slate-900 text-white shadow-lg sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
                 <div class="bg-white/10 p-2 rounded-lg backdrop-blur-sm border border-white/20">
-                    <i class="fa-solid fa-hospital-user text-2xl text-blue-300"></i>
+                    <i class="fa-solid fa-chart-line text-2xl text-blue-300"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight">Hospital AI Mapping Canvas</h1>
-                    <p class="text-xs text-blue-200">แดชบอร์ดสรุปผลกลยุทธ์การระดมสมองเทคโนโลยีและ AI โรงพยาบาล (กลุ่ม 1 - 7)</p>
+                    <h1 class="text-xl font-bold tracking-tight">Hospital AI Advanced Analytics Center</h1>
+                    <p class="text-xs text-blue-200">ศูนย์วิเคราะห์ข้อมูลและแผนภาพกลยุทธ์ปัญญาประดิษฐ์โรงพยาบาล (กลุ่ม 1 - 7)</p>
                 </div>
             </div>
             
             <div class="flex items-center gap-3">
-                <!-- GitHub Repository Badge Links -->
                 <a href="https://github.com" target="_blank" class="bg-slate-900/40 hover:bg-slate-900/60 text-white text-xs px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-2 transition">
                     <i class="fa-brands fa-github text-sm"></i>
                     <span>View on GitHub</span>
                 </a>
-                <button onclick="toggleDarkMode()" id="darkModeBtn" class="bg-white/10 hover:bg-white/20 p-2 rounded-full transition border border-white/10" title="เปลี่ยนธีม">
+                <button onclick="toggleDarkMode()" id="darkModeBtn" class="bg-white/10 hover:bg-white/20 p-2 rounded-full transition border border-white/10">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT CONTAINER -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 w-full flex flex-col gap-6">
         
-        <!-- INTRO & FRAMEWORK DEFINITION -->
-        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-5 items-center justify-between">
-            <div class="space-y-2">
-                <h2 class="text-lg font-semibold flex items-center gap-2 text-indigo-900">
-                    <i class="fa-solid fa-circle-info text-blue-600"></i> แนวทางการจัดหมวดหมู่กลยุทธ์อย่างสมดุล (Strategic Mapping Model)
-                </h2>
-                <p class="text-sm text-slate-600 leading-relaxed max-w-4xl">
-                    จำแนกไอเดียทั้งหมด 4 แกนเพื่อไม่ให้เทคโนโลยีเอียงไปทางใดทางหนึ่ง โดยพิจารณาจาก 
-                    <strong>ผลกระทบต่อการรักษาผู้ป่วย (Impact on Patient Care)</strong> และ 
-                    <strong>ความสามารถในการมองเห็นรับรู้ของผู้ป่วย (Visibility to Patient)</strong> เพื่อค้นหาระบบที่เป็น High Impact และ Quick-Win
-                </p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-slate-400 font-semibold uppercase">นวัตกรรมทั้งหมด</p>
+                    <h3 id="totalCount" class="text-3xl font-bold text-slate-800 mt-1">0</h3>
+                </div>
+                <div class="bg-indigo-50 p-3 rounded-xl text-indigo-600"><i class="fa-solid fa-lightbulb text-xl"></i></div>
             </div>
-            <div class="flex flex-wrap gap-2 justify-end w-full md:w-auto">
-                <button onclick="resetFilters()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
-                    <i class="fa-solid fa-arrow-rotate-left"></i> รีเซ็ตตัวกรองทั้งหมด
-                </button>
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-slate-400 font-semibold uppercase">High Impact Care</p>
+                    <h3 id="highImpactCount" class="text-3xl font-bold text-emerald-600 mt-1">0</h3>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-xl text-emerald-600"><i class="fa-solid fa-heart-pulse text-xl"></i></div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-slate-400 font-semibold uppercase">Frontline Systems</p>
+                    <h3 id="frontlineCount" class="text-3xl font-bold text-blue-600 mt-1">0</h3>
+                </div>
+                <div class="bg-blue-50 p-3 rounded-xl text-blue-600"><i class="fa-solid fa-users text-xl"></i></div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-slate-400 font-semibold uppercase">Consensus (ซ้ำเกิน 2 กลุ่ม)</p>
+                    <h3 id="consensusCount" class="text-3xl font-bold text-amber-600 mt-1">0</h3>
+                </div>
+                <div class="bg-amber-50 p-3 rounded-xl text-amber-600"><i class="fa-solid fa-handshake text-xl"></i></div>
             </div>
         </div>
 
-        <!-- KPI SUMMARIES -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl p-4 text-white shadow-sm hover:shadow-md transition">
-                <p class="text-xs opacity-85 uppercase font-semibold">ไอเดียและระบบทั้งหมด</p>
-                <div class="flex justify-between items-end mt-2">
-                    <span id="totalCount" class="text-3xl font-bold">0</span>
-                    <i class="fa-solid fa-lightbulb text-2xl opacity-40"></i>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 lg:col-span-2 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-chart-pie text-indigo-600"></i> 1. Gap Analysis & Strategic Balance (การประเมินความสมดุลเชิงยุทธศาสตร์)
+                    </h3>
+                    <p class="text-xs text-slate-500 mb-4">วิเคราะห์ความสมดุลของการกระจายเทคโนโลยี เพื่อป้องกันปัญหาการลงทุนเอียงไปด้านใดด้านหนึ่งมากเกินไป</p>
+                    
+                    <div class="space-y-3" id="gapAnalysisBars">
+                        </div>
                 </div>
+                <div id="strategicAdviceBox" class="mt-4 p-3 rounded-xl text-xs leading-relaxed">
+                    </div>
             </div>
-            <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-4 text-white shadow-sm hover:shadow-md transition">
-                <p class="text-xs opacity-85 uppercase font-semibold"> High Impact (ผลกระทบสูง)</p>
-                <div class="flex justify-between items-end mt-2">
-                    <span id="highImpactCount" class="text-3xl font-bold">0</span>
-                    <i class="fa-solid fa-circle-up text-2xl opacity-40"></i>
+
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrow-trend-up text-amber-500"></i> 2. Tech Focus Area (คำสำคัญยอดนิยม)
+                    </h3>
+                    <p class="text-xs text-slate-500 mb-4">กลุ่มคำเทคโนโลยีหลักที่บุคลากรต้องการให้เกิดขึ้นในองค์กรมากที่สุด</p>
+                    
+                    <div class="flex flex-wrap gap-2 pt-2" id="keywordCloudContainer">
+                        </div>
                 </div>
-            </div>
-            <div class="bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-4 text-white shadow-sm hover:shadow-md transition">
-                <p class="text-xs opacity-85 uppercase font-semibold">Frontline (ด่านหน้า)</p>
-                <div class="flex justify-between items-end mt-2">
-                    <span id="frontlineCount" class="text-3xl font-bold">0</span>
-                    <i class="fa-solid fa-people-arrows text-2xl opacity-40"></i>
-                </div>
-            </div>
-            <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-4 text-white shadow-sm hover:shadow-md transition">
-                <p class="text-xs opacity-85 uppercase font-semibold">ระบบยอดฮิต (ซ้ำกันหลายกลุ่ม)</p>
-                <div class="flex justify-between items-end mt-2">
-                    <span id="consensusCount" class="text-3xl font-bold">0</span>
-                    <i class="fa-solid fa-fire text-2xl opacity-40"></i>
+                <div class="text-[11px] text-slate-400 border-t border-slate-100 pt-3 mt-4">
+                    * ค้นพบความต้องการระบบอัตโนมัติ (Automation) และบริการผ่านสมาร์ทโฟนสูงขึ้นอย่างมีนัยสำคัญ
                 </div>
             </div>
         </div>
 
-        <!-- CONTROLS & SELECTION BAR -->
         <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex flex-col lg:flex-row gap-4 items-center">
-            <!-- Search -->
             <div class="relative w-full lg:w-72">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
-                <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="ค้นหาชื่อระบบหรือคำสำคัญ..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="ค้นหาชื่อระบบ/คำสำคัญกลยุทธ์..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
             </div>
-
-            <!-- Group Filter Pills -->
             <div class="flex flex-wrap gap-1.5 items-center justify-start w-full overflow-x-auto pb-1 lg:pb-0" id="groupFilterContainer">
-                <span class="text-xs font-semibold text-slate-500 mr-2">กลุ่มระดมสมอง:</span>
-                <!-- Generated dynamically -->
-            </div>
+                </div>
         </div>
 
-        <!-- MATRIX & LIST DISPLAY WORKSPACE -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            
-            <!-- LEFT AREA: THE 2x2 CANVAS MATRIX (7 Cols) -->
             <div class="lg:col-span-7 bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex flex-col justify-between">
                 <div class="border-b border-slate-100 pb-3 mb-4 flex justify-between items-center">
-                    <h3 class="font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fa-solid fa-chart-gantt text-blue-600"></i> แผนภาพ Hospital AI Mapping Canvas (Interactive)
+                    <h3 class="font-bold text-slate-800 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-map-location-dot text-blue-600"></i> แผนภาพมิติทางกลยุทธ์ Hospital AI Mapping Canvas
                     </h3>
-                    <span class="text-xs bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-full font-medium" id="matrixViewLabel">
-                        แสดงข้อมูล: ทุกกลุ่มร่วมกัน
-                    </span>
+                    <button onclick="resetFilters()" class="text-[11px] text-indigo-600 hover:underline">รีเซ็ตตัวกรอง</button>
                 </div>
 
-                <!-- THE CANVAS GRID -->
-                <div class="relative aspect-square w-full border-2 border-slate-300 rounded-xl overflow-hidden bg-slate-50 flex flex-col shadow-inner">
-                    
-                    <!-- Grid background quadrant separations -->
+                <div class="relative aspect-square w-full border border-slate-200 rounded-xl overflow-hidden bg-slate-50 shadow-inner">
                     <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 pointer-events-none">
-                        <!-- Q1 Top Left -->
-                        <div class="border-r border-b border-dashed border-slate-300 bg-emerald-50/20 p-2">
-                        </div>
-                        <!-- Q2 Top Right -->
-                        <div class="border-b border-dashed border-slate-300 bg-blue-50/20 p-2">
-                        </div>
-                        <!-- Q3 Bottom Left -->
-                        <div class="border-r border-dashed border-slate-300 bg-slate-100/30 p-2">
-                        </div>
-                        <!-- Q4 Bottom Right -->
-                        <div class="bg-amber-50/20 p-2">
-                        </div>
+                        <div class="border-r border-b border-dashed border-slate-300 bg-emerald-50/10"></div>
+                        <div class="border-b border-dashed border-slate-300 bg-blue-50/10"></div>
+                        <div class="border-r border-dashed border-slate-300 bg-slate-100/10"></div>
+                        <div class="bg-amber-50/10"></div>
                     </div>
 
-                    <!-- AXIS LABELS AND ARROWS -->
-                    <!-- Y Axis Label (Impact on Patient Care) -->
-                    <div class="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 origin-left text-[11px] font-bold text-indigo-900 bg-white/80 px-2 py-0.5 rounded shadow-sm z-10 flex items-center gap-1">
-                        <i class="fa-solid fa-arrow-right"></i> ผลกระทบต่อการดูแลผู้ป่วย (Impact on Patient Care)
+                    <div class="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 origin-left text-[10px] font-bold text-indigo-950 bg-white/90 px-2 py-0.5 rounded shadow-sm z-10">
+                        ↑ ผลกระทบต่อการรักษา (Impact on Care)
                     </div>
-                    <div class="absolute left-2 top-2 text-[10px] font-bold text-slate-500">High (สูง)</div>
-                    <div class="absolute left-2 bottom-2 text-[10px] font-bold text-slate-500">Low (ต่ำ)</div>
-
-                    <!-- X Axis Label (Visibility to Patient) -->
-                    <div class="absolute bottom-1 left-1/2 -translate-x-1/2 text-[11px] font-bold text-indigo-900 bg-white/80 px-2 py-0.5 rounded shadow-sm z-10 flex items-center gap-1">
-                        <i class="fa-solid fa-arrow-right"></i> การมองเห็นของคนไข้ (Visibility to Patient)
+                    <div class="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-indigo-950 bg-white/90 px-2 py-0.5 rounded shadow-sm z-10">
+                        การมองเห็นของคนไข้ (Visibility) →
                     </div>
-                    <div class="absolute right-2 bottom-8 text-[10px] font-bold text-slate-500">Frontline (ด่านหน้า)</div>
-                    <div class="absolute left-2 bottom-8 text-[10px] font-bold text-slate-500">Back-office (ด่านหลัง)</div>
+                    
+                    <div class="absolute left-2 top-2 text-[9px] font-semibold text-slate-400">High Impact</div>
+                    <div class="absolute left-2 bottom-6 text-[9px] font-semibold text-slate-400">Low Impact</div>
+                    <div class="absolute right-2 bottom-6 text-[9px] font-semibold text-slate-400">Frontline (ด่านหน้า)</div>
+                    <div class="absolute left-16 bottom-6 text-[9px] font-semibold text-slate-400">Back-office (ด่านหลัง)</div>
 
-                    <!-- Central Crosslines -->
-                    <div class="absolute inset-x-0 top-1/2 h-0.5 bg-slate-400"></div>
-                    <div class="absolute inset-y-0 left-1/2 w-0.5 bg-slate-400"></div>
+                    <div class="absolute inset-x-0 top-1/2 h-0.5 bg-slate-300"></div>
+                    <div class="absolute inset-y-0 left-1/2 w-0.5 bg-slate-300"></div>
 
-                    <!-- Interactive Plot Area for Interactive Dot Elements -->
-                    <div id="dotPlotContainer" class="absolute inset-0 p-8 z-20">
-                        <!-- Elements dynamically rendered here with absolute positioning -->
-                    </div>
-                </div>
-
-                <div class="mt-4 pt-3 border-t border-slate-100 grid grid-cols-2 md:grid-cols-4 gap-2 text-[10px] text-slate-500">
-                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-100 border border-emerald-400 block"></span> High Impact | Back-office</div>
-                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-100 border border-blue-400 block"></span> High Impact | Frontline</div>
-                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-200 border border-slate-400 block"></span> Low Impact | Back-office</div>
-                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-100 border border-amber-400 block"></span> Low Impact | Frontline</div>
+                    <div id="dotPlotContainer" class="absolute inset-0 p-8 z-20"></div>
                 </div>
             </div>
 
-            <!-- RIGHT AREA: DETAILED LIST & INTELLIGENCE CARDS (5 Cols) -->
             <div class="lg:col-span-5 flex flex-col gap-6">
-                
-                <!-- TOP INTERACTIVE ITEM VIEW CARD -->
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 min-h-[160px] flex flex-col justify-between relative overflow-hidden transition-all duration-200" id="detailDisplayPanel">
-                    <div class="absolute top-0 right-0 p-8 text-slate-100/40 pointer-events-none">
-                        <i class="fa-solid fa-network-wired text-8xl"></i>
-                    </div>
-                    <div class="z-10">
-                        <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600" id="detailQuadBadge">Quadrant</span>
-                            <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600" id="detailGroupBadge">กลุ่มเสนอ</span>
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-between min-h-[180px]" id="detailDisplayPanel">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-1.5 mb-2">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600" id="detailQuadBadge">Quadrant</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-600" id="detailGroupBadge">Group</span>
                         </div>
-                        <h4 class="text-xl font-bold text-slate-800" id="detailTitle font-bold">แตะจุดใดๆ ในแผนที่เพื่อดูรายละเอียด</h4>
-                        <p class="text-sm text-slate-600 mt-2 line-clamp-3 leading-relaxed" id="detailDesc">โปรดคลิกเลือกปุ่มระบบดิจิทัลหรือ AI ในแผนภาพด้านซ้ายมือ หรือจากรายการระบบเด่นยอดนิยมด้านล่าง เพื่อดูการจำแนกเชิงกลยุทธ์และการวิเคราะห์ระบบ</p>
+                        <h4 class="text-lg font-bold text-slate-800" id="detailTitle">คลิกเลือกจุดระบบเพื่อดูวิเคราะห์รายชิ้น</h4>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed" id="detailDesc">แดชบอร์ดจะประมวลผลคำอธิบายความพร้อม วัตถุประสงค์ และการจัดกลุ่มร่วมระหว่างโรงพยาบาลให้ทราบทันที</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 z-10">
-                        <span id="detailConsensus">ระบบสอดคล้องหลัก: -</span>
-                        <span class="text-indigo-600 font-semibold cursor-pointer hover:underline" id="viewAllSimilarBtn">สืบค้นระบบคล้ายกัน &rarr;</span>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]" id="detailConsensus">
+                        -
                     </div>
                 </div>
 
-                <!-- STRATEGIC TOP CONSENSUS LIST (Common ground among hospital staffs) -->
                 <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex-grow flex flex-col">
-                    <h3 class="font-bold text-slate-800 pb-3 border-b border-slate-100 flex items-center gap-2">
-                        <i class="fa-solid fa-star text-amber-500"></i> ระดับระบบยอดฮิต (Consensus Systems)
-                        <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-normal">เรียงตามการกล่าวซ้ำ</span>
+                    <h3 class="font-bold text-slate-800 pb-2 text-sm border-b border-slate-100 flex items-center gap-2">
+                        <i class="fa-solid fa-star text-amber-500"></i> 3. Strategic Synergy (ระบบที่มีความต้องการพ้องร่วมกันสูง)
                     </h3>
-                    
-                    <div class="overflow-y-auto max-h-[350px] divide-y divide-slate-100 flex-grow" id="consensusList">
-                        <!-- Dynamically generated list items of top overlap systems -->
-                    </div>
+                    <div class="overflow-y-auto max-h-[250px] divide-y divide-slate-100" id="consensusList"></div>
                 </div>
             </div>
         </div>
 
-        <!-- ENTIRE SYSTEM DIRECTORY (TABLE & CATEGORY CARDS) -->
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
-            <div class="border-b border-slate-100 pb-4 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
-                        <i class="fa-solid fa-folder-open text-blue-600"></i> ทำเนียบรายชื่อระบบดิจิทัลและ AI ทั้งหมดจากระดมสมอง
-                    </h3>
-                    <p class="text-xs text-slate-500 mt-0.5">รวมทุกคำสำคัญและไอเดียจากทีมทำงาน ยูสเคสจริงที่มีความพร้อมสำหรับการวางแผนของหน่วยงาน</p>
-                </div>
-                <div class="flex gap-2 text-xs">
-                    <button onclick="changeDirView('all')" id="dirAllBtn" class="px-3 py-1.5 rounded-lg font-medium transition bg-blue-500 text-white">ทั้งหมด</button>
-                    <button onclick="changeDirView('high_impact')" id="dirHighBtn" class="px-3 py-1.5 rounded-lg font-medium transition bg-slate-100 hover:bg-slate-200 text-slate-700">เฉพาะ High Impact</button>
-                </div>
-            </div>
-
-            <!-- TABLE OF ALL ITEMS -->
+            <h3 class="font-bold text-slate-800 flex items-center gap-2 mb-4 text-base">
+                <i class="fa-solid fa-list-check text-indigo-600"></i> 4. ทำเนียบและแผนการจำแนกข้อมูลระบบเทคโนโลยีทั้งหมด
+            </h3>
             <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse text-sm">
+                <table class="w-full text-left text-xs border-collapse">
                     <thead>
-                        <tr class="border-b border-slate-200 text-slate-400 font-semibold">
-                            <th class="pb-3 pt-1">ชื่อไอเดีย / ระบบเทคโนโลยี</th>
-                            <th class="pb-3 pt-1">มิติวิสัยทัศน์ (Quadrant)</th>
-                            <th class="pb-3 pt-1">กลุ่มเสนอ</th>
-                            <th class="pb-3 pt-1 text-center">ระดับผลกระทบ</th>
-                            <th class="pb-3 pt-1 text-right">ดำเนินการ</th>
+                        <tr class="border-b border-slate-200 text-slate-400 font-semibold uppercase">
+                            <th class="pb-2">ชื่อระบบ / เทคโนโลยี</th>
+                            <th class="pb-2">มิติเชิงยุทธศาสตร์</th>
+                            <th class="pb-2">กลุ่มระดมสมอง</th>
+                            <th class="pb-2 text-center">ระดับผลกระทบ</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 text-slate-700" id="directoryTableBody">
-                        <!-- Dynamically filled with javascript -->
-                    </tbody>
+                    <tbody class="divide-y divide-slate-100 text-slate-600" id="directoryTableBody"></tbody>
                 </table>
             </div>
         </div>
-
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs mt-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>โรงพยาบาลยุคดิจิทัลด้วยเทคโนโลยีปัญญาประดิษฐ์ (AI-Driven Hospital Project)</p>
-            <p class="mt-1 text-slate-600">จัดเก็บและประมวลผลข้อมูลการระดมสมองของเจ้าหน้าที่โรงพยาบาลเชิงยุทธศาสตร์เพื่อการใช้งานระยะยาวบน GitHub Pages</p>
-        </div>
+    <footer class="bg-slate-900 text-slate-500 py-4 text-center text-[11px] mt-auto">
+        <p>Hospital AI Strategic Engine v2.0 - Enabled for GitHub Pages Deployment</p>
     </footer>
 
-    <!-- RAW DATASET AND LOGIC IN JS -->
     <script>
-        // 1. RAW INTEGRATED DATASET FROM ALL 7 BRAINSTORMING GROUPS
-        const originalDataset = [
-            // --- GROUP 7 ---
-            { id: 1, name: "Robot จัดยา / เครื่องนับเม็ดยา", quadrant: "high_back", groups: ["กลุ่ม 7", "กลุ่ม 2", "กลุ่ม 4", "กลุ่ม 5"], desc: "หุ่นยนต์และระบบอัตโนมัติในการจัดยาและนับเม็ดยา เพื่อลดความผิดพลาดด้านเภสัชกรรม คีย์เวิร์ดเด่นที่พบเกือบทุกกลุ่ม", consensus: true },
-            { id: 2, name: "Web Alert โรคระบาด", quadrant: "high_back", groups: ["กลุ่ม 7", "กลุ่ม 5"], desc: "ระบบเว็บไซต์แจ้งเตือนเหตุและเฝ้าระวังโรคติดต่อ/โรคระบาดร้ายแรงแบบเรียลไทม์เพื่อเตรียมรับมือด่านหลัง", consensus: true },
-            { id: 3, name: "App QR-Code สแกนรถนอนคนไข้", quadrant: "high_back", groups: ["กลุ่ม 7"], desc: "แอปพลิเคชันสแกน QR Code ตรวจสอบตัวตนผู้ป่วยและข้อมูลส่งแล็บ/ตรวจรักษาบนรถเข็นและเตียงเคลื่อนย้ายอย่างปลอดภัย", consensus: false },
-            { id: 4, name: "Smart Queue / ตู้คีออส KIOSK", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 1", "กลุ่ม 2", "กลุ่ม 4", "กลุ่ม 6"], desc: "ระบบตู้คีออสบริการตนเองด้านหน้าโรงพยาบาล พร้อมเชื่อมคิวอัจฉริยะสำหรับคนไข้ ช่วยลดความแออัดอย่างเห็นผล", consensus: true },
-            { id: 5, name: "Smart Virtual Sign", quadrant: "high_front", groups: ["กลุ่ม 7"], desc: "ป้ายแจ้งเตือนเสมือนจริง คอนโทรลสัญญาณข้อมูลอัปเดตสเตตัสกระบวนการรักษาพยาบาลด่านหน้าแบบอัจฉริยะ", consensus: false },
-            { id: 6, name: "Chest AI X-ray / MRI / CT Scan", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 4", "กลุ่ม 1"], desc: "เทคโนโลยี AI ตรวจวินิจฉัยอ่านฟิล์มรังสี ปอด สมอง และข้อต่อ ช่วยรังสีแพทย์ตรวจพยากรณ์ความผิดปกติได้อย่างรวดเร็ว", consensus: true },
-            { id: 7, name: "Telemedicine / Telenurse", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 1", "กลุ่ม 4", "กลุ่ม 2"], desc: "ระบบโทรเวชกรรมให้คำปรึกษาผู้ป่วยทางไกล ลดขั้นตอนการเดินทางโดยเฉพาะโรคเรื้อรัง", consensus: true },
-            { id: 8, name: "AI แปลภาษาทางการแพทย์", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 5", "กลุ่ม 6"], desc: "ปัญญาประดิษฐ์ถอดความ แปลภาษา และเอกสารรักษาพยาบาลระหว่างทีมแพทย์กับผู้ป่วยต่างประเทศหรือกลุ่มชาติพันธุ์", consensus: true },
-            { id: 9, name: "Center Monitor bed side", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 1"], desc: "หน้าจอศูนย์กลางรวมสัญญาณพิกัดชีพจรและข้อมูลวิกฤตของคนไข้ตามข้างเตียงให้ผู้ปฏิบัติงานด่านหน้าดูแลครอบคลุม", consensus: true },
-            { id: 10, name: "ระบบบริหารจัดการ ERP", quadrant: "low_back", groups: ["กลุ่ม 7"], desc: "ซอฟต์แวร์วางแผนทรัพยากรภายในองค์กร ระบบจัดซื้อจัดจ้าง บัญชี และงานกำลังคนหลังบ้าน", consensus: false },
-            { id: 11, name: "ระบบ E-office / Document Flow", quadrant: "low_back", groups: ["กลุ่ม 7"], desc: "ระบบงานสารบรรณอิเล็กทรอนิกส์ การอนุมัติเอกสารไร้กระดาษ เพื่อความสะดวกรวดเร็วในการบริหารองค์กร", consensus: false },
-            { id: 12, name: "Face ID / Finger Scan เข้างาน", quadrant: "low_back", groups: ["กลุ่ม 7", "กลุ่ม 1", "กลุ่ม 2", "กลุ่ม 4", "กลุ่ม 6"], desc: "ระบบสแกนใบหน้าและนิ้วสำหรับเช็กยอดพนักงานเข้าออกกะการทำงาน มีความแม่นยำและเสร็จสิ้นรวดเร็ว", consensus: true },
-            { id: 13, name: "ระบบรับ-ส่งผู้ป่วย (แอปพลิเคชัน)", quadrant: "low_back", groups: ["กลุ่ม 7"], desc: "แอปพนักงานส่งเวชระเบียนและเปลนอนภายในจุดรับส่งต่างๆ เพื่อเพิ่มความรวดเร็วและตรวจสอบประวัติงาน", consensus: false },
-            { id: 14, name: "Line สื่อสารองค์กร", quadrant: "low_back", groups: ["กลุ่ม 7"], desc: "ระบบแชต Line หรือ Official Chat ที่เซ็ตอัปสำหรับเป็นแพลตฟอร์มคุยงานภายในกลุ่มแพทย์ พยาบาล", consensus: false },
-            { id: 15, name: "Alert Lab ผิดปกติผ่านทาง App", quadrant: "low_front", groups: ["กลุ่ม 7", "กลุ่ม 6"], desc: "แจ้งผลวิเคราะห์ห้องปฏิบัติการที่เร่งด่วนหรือค่าวิกฤตความผิดปกติผ่านทางโทรศัพท์มือถือเจ้าหน้าที่ทันที", consensus: true },
-            { id: 16, name: "Dashboard ข้อมูลข่าวสาร / พยากรณ์โรค", quadrant: "low_front", groups: ["กลุ่ม 7", "กลุ่ม 1", "กลุ่ม 5"], desc: "แดชบอร์ดรวบรวมรายงานสถานการณ์เตียง ยอดผู้ป่วยรายวัน และระบบพยากรณ์โรคระบาด", consensus: true },
-            { id: 17, name: "Auto Print สัญญาณชีพ Record", quadrant: "low_front", groups: ["กลุ่ม 7"], desc: "ระบบพิมพ์ผลอัตโนมัติของสัญญาณชีพเมื่อเครื่องวัดประมวลผลเสร็จสิ้น ส่งตรงเก็บในแฟ้มข้อมูลทันที", consensus: false },
-            { id: 18, name: "QR-code ข้อมูลยาที่รับ", quadrant: "low_front", groups: ["กลุ่ม 7"], desc: "คิวอาร์โค้ดสติกเกอร์ติดซองยา เพื่อให้คนไข้สแกนดูวิธีใช้ ยาพึงระวัง และผลข้างเคียงบนโทรศัพท์ตนเอง", consensus: false },
-            { id: 19, name: "ระบบบริหารจัดการที่จอดรถอัจฉริยะ", quadrant: "low_front", groups: ["กลุ่ม 7"], desc: "เซนเซอร์จองที่จอดรถและป้ายนำทางบอกพื้นที่ว่างสำหรับผู้มารับบริการของโรงพยาบาล", consensus: false },
-            { id: 20, name: "QR-code แสกน authen สิทธิ์รักษา", quadrant: "low_front", groups: ["กลุ่ม 7", "กลุ่ม 5", "กลุ่ม 1"], desc: "การยืนยันตัวตนสิทธิ์การรักษาพยาบาล (ประกันสังคม/บัตรทอง) ผ่านการสแกน QR Code เพื่อตรวจสอบเร็วขึ้น", consensus: true },
-            { id: 21, name: "Alert แจ้งเตือนแพ้ยา / Drug Interaction", quadrant: "low_front", groups: ["กลุ่ม 7", "กลุ่ม 4", "กลุ่ม 5", "กลุ่ม 6"], desc: "ป็อปอัปแจ้งเตือนอัจฉริยะบนหน้าจอแพทย์-เภสัชกร เมื่อมีการสั่งยาที่ผู้ป่วยเคยแพ้ หรือยาที่ตีกัน", consensus: true },
-
-            // --- GROUP 5 ---
-            { id: 22, name: "App Patient Identification (จำแนกเลือด/เปล/เด็ก)", quadrant: "high_back", groups: ["กลุ่ม 5", "กลุ่ม 4", "กลุ่ม 6"], desc: "แอปพลิเคชันยืนยันตัวตนที่ครอบคลุมการระบุชื่อคู่กับตัวกรองไตเทียม ถุงโลหิต รถเปล และเด็กทารกแรกเกิด", consensus: true },
-            { id: 23, name: "ใช้โปรแกรม NDEMS อัจฉริยะ", quadrant: "high_back", groups: ["กลุ่ม 5"], desc: "การนำระบบฐานข้อมูลจัดการฉุกเฉินระดับชาติเข้ามาร่วมวิเคราะห์การรับส่งผู้ป่วยวิกฤตด่านหลัง", consensus: false },
-            { id: 24, name: "ระบบ Google Map นำทางรับผู้ป่วยฉุกเฉิน", quadrant: "high_back", groups: ["กลุ่ม 5", "กลุ่ม 2"], desc: "แผนที่นำทางอัจฉริยะเพื่อรณรงค์ความเร็วของทีมพยาบาลแอมบูแลนซ์เดินทางหาพิกัดบ้านผู้ปวยได้ถูกจุด", consensus: true },
-            { id: 25, name: "Dr. Module / ระบบสั่งยาแพทย์", quadrant: "high_back", groups: ["กลุ่ม 5", "กลุ่ม 6", "กลุ่ม 1"], desc: "แอปพลิเคชันหรือโมดูลบันทึกและส่งข้อมูลยาและผลตรวจแล็บโดยตรงจากแพทย์ไปห้องยาและวอร์ด", consensus: true },
-            { id: 26, name: "Robot ผ่าตัดข้อเข่าอัจฉริยะ", quadrant: "high_front", groups: ["กลุ่ม 5", "กลุ่ม 1"], desc: "เทคโนโลยีช่วยศัลยแพทย์กระดูกในการวางตำแหน่งสลักเพื่อทำผ่าตัดเปลี่ยนข้อเข่าด้วยความเที่ยงตรงระดับมิลลิเมตร", consensus: true },
-            { id: 27, name: "ระบบคัดแยกผู้ป่วยจุดฉุกเฉิน (Smart Triage)", quadrant: "high_front", groups: ["กลุ่ม 5"], desc: "คัดกรองจัดระดับความเร่งด่วนคนไข้ด้วยโมเดลวิเคราะห์ความหนักเบาโรค ช่วยให้คนไข้วิกฤตได้รักษาทันท่วงที", consensus: false },
-            { id: 28, name: "ระบบแจ้งคิวและนัดหมายผ่าน Line OA โรงพยาบาล", quadrant: "high_front", groups: ["กลุ่ม 5", "กลุ่ม 2", "กลุ่ม 4", "กลุ่ม 1"], desc: "เช็กสเตตัสคิวรักษา สแกนนัด และรับข่าวสารแจ้งเตือนเตือนคิวส่งยาโดยคนไข้ไม่ต้องยืนรอหน้าห้อง", consensus: true },
-            { id: 29, name: "ระบบจองเตียงตึกอายุรกรรม (Med)", quadrant: "low_front", groups: ["กลุ่ม 5", "กลุ่ม 1", "กลุ่ม 6"], desc: "ระบบอัปเดตและจองเตียงว่างออนไลน์ภายในวอร์ด ช่วยผู้รับบริการนอนแอดมิทได้เร็วลดการตกค้างห้องฉุกเฉิน", consensus: true },
-            { id: 30, name: "VCNET / Vachira Easy Track", quadrant: "low_back", groups: ["กลุ่ม 5"], desc: "โมดูลภายในระบบเครือข่ายโรงพยาบาลวชิรพยาบาล ติดตามการเข้าถึงการเบิกจ่ายและเอกสาร", consensus: false },
-            { id: 31, name: "ระบบจองห้องประชุมออนไลน์", quadrant: "low_back", groups: ["กลุ่ม 5", "กลุ่ม 1"], desc: "ปฏิทินกลางสำหรับพนักงานเพื่อสำรองสิทธิ์การเข้าใช้งานห้องประชุมและทรัพยากรไอที", consensus: true },
-            { id: 32, name: "App เป๋าตังเช็กสิทธิ์", quadrant: "low_back", groups: ["กลุ่ม 5", "กลุ่ม 1"], desc: "เชื่อมต่อสิทธิ์ความคุครองสุขภาพและจ่ายชำระเงินดิจิทัลผ่านเครือข่ายเป๋าตังทางการแพทย์", consensus: true },
-
-            // --- GROUP 6 ---
-            { id: 33, name: "Scan ตัวกรองไตเทียมคู่คนไข้", quadrant: "high_front", groups: ["กลุ่ม 6"], desc: "ระบบสแกนบาร์โค้ดยืนยันคู่ตัวกรองฟอกเลือดเพื่อป้องกันการเปลี่ยนสลับหรือใช้ผิดคนไข้เพื่อความปลอดภัยระดับสูงสุด", consensus: false },
-            { id: 34, name: "ระบบไอโอที (IoT) อุณหภูมิตู้เย็นเก็บยา", quadrant: "low_back", groups: ["กลุ่ม 6", "กลุ่ม 1"], desc: "เซนเซอร์ตรวจเช็กอุณหภูมิตู้ยาและวัคซีนตลอด 24 ชั่วโมง ส่งแจ้งเตือนเมื่อระบบไฟฟ้าหรือความเย็นขัดข้อง", consensus: true },
-            { id: 35, name: "สแกนนิ้ว/สแกนใบหน้าเข้าทำงาน", quadrant: "low_back", groups: ["กลุ่ม 6", "กลุ่ม 2", "กลุ่ม 4"], desc: "ระบบยืนยันตัวตนสำหรับลงชื่อเข้าทำงานของเจ้าหน้าที่ฝ่ายสนับสนุนงานหลังบ้าน", consensus: true },
-
-            // --- ADDITIONAL UNIQUE/CONSENSUS ITEMS ---
-            { id: 36, name: "App ประเมิน Sepsis Alert", quadrant: "high_back", groups: ["กลุ่ม 4"], desc: "โมเดลปัญญาประดิษฐ์และประมวลผลดัชนีชีพ เพื่อพยากรณ์ภาวะสุ่มเสี่ยงช็อกติดเชื้อในกระแสเลือดล่วงหน้า", consensus: false },
-            { id: 37, name: "ระบบคลังพัสดุและ Inventory อัจฉริยะ", quadrant: "low_back", groups: ["กลุ่ม 4", "กลุ่ม 1"], desc: "ระบบพยากรณ์อัตราการเบิกใช้ยา คาดเดายาขาดสต็อก และจัดซื้ออัตโนมัติผ่านเวิร์กโฟลว์ของฝ่ายคลัง", consensus: true },
-            { id: 38, name: "ระบบสแกนม่านตาเพื่อระบุตัวตน (Biometric Identity)", quadrant: "high_front", groups: ["กลุ่ม 2"], desc: "เพิ่มขั้นความปลอดภัยในการเข้าถึงสิทธิ์ประวัติ หรือยืนยันตัวคนไข้ด้วยเทคโนโลยีทางม่านตา", consensus: false },
-            { id: 39, name: "ThaiID / ยืนยันสิทธิ์ผ่านแอปฯรัฐ", quadrant: "low_back", groups: ["กลุ่ม 2", "กลุ่ม 7", "กลุ่ม 6", "กลุ่ม 1", "กลุ่ม 5"], desc: "การดึงข้อมูลส่วนบุคคลและสิทธิ์การรักษาโดยตรงจากชิปการ์ดบัตรประชาชนหรือฐานข้อมูลรัฐอย่างปลอดภัย", consensus: true },
-            { id: 40, name: "ระบบชำระเงินดิจิทัล QR Payment", quadrant: "low_back", groups: ["กลุ่ม 1", "กลุ่ม 2"], desc: "อำนวยความสะดวกการชำระเงินค่ายานอกสิทธิ์รักษาผ่าน Dynamic QR Code ลดความผิดพลาดและระยะเวลารอหน้าห้องคลัง", consensus: true }
+        const rawDataset = [
+            { id: 1, name: "Robot จัดยา / เครื่องนับเม็ดยา", quadrant: "high_back", groups: ["กลุ่ม 7", "กลุ่ม 2", "กลุ่ม 4", "กลุ่ม 5"], desc: "ลดความคลาดเคลื่อนทางเภสัชกรรม เพิ่มความไวในการบริการคลังยา", consensus: true },
+            { id: 2, name: "Web Alert โรคระบาดร้ายแรง", quadrant: "high_back", groups: ["กลุ่ม 7", "กลุ่ม 5"], desc: "เฝ้าระวังและแจ้งเตือนภัยด้านสาธารณสุขและระบาดวิทยาอย่างทันท่วงที", consensus: true },
+            { id: 3, name: "App QR-Code สแกนรถนอนคนไข้", quadrant: "high_back", groups: ["กลุ่ม 7"], desc: "ระบบยืนยันตัวตนคนไข้บนเปลเคลื่อนย้ายเพื่อป้องกันแล็บสลับคน", consensus: false },
+            { id: 4, name: "Smart Queue / ตู้คีออส KIOSK", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 1", "กลุ่ม 2", "กลุ่ม 4", "กลุ่ม 6"], desc: "จุดบริการตนเองเพื่อคัดกรองสิทธิ์และจัดคิวอัจฉริยะ ลดความแออัดหน้าห้องตรวจ", consensus: true },
+            { id: 5, name: "Smart Virtual Sign", quadrant: "high_front", groups: ["กลุ่ม 7"], desc: "ป้ายข้อมูลดิจิทัลแสดงสถานะคิวการเข้ารับการรักษาแบบเรียลไทม์", consensus: false },
+            { id: 6, name: "Chest AI X-ray / MRI / CT Scan", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 4", "กลุ่ม 1"], desc: "ปัญญาประดิษฐ์คัดกรองรอยโรคและอ่านผลฟิล์มรังสีเบื้องต้นช่วยแพทย์", consensus: true },
+            { id: 7, name: "Telemedicine / Telenurse ทางไกล", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 1", "กลุ่ม 4", "กลุ่ม 2"], desc: "บริการพบแพทย์ออนไลน์สำหรับผู้ป่วยรายเก่าและโรคเรื้อรัง ลดการเดินทาง", consensus: true },
+            { id: 8, name: "AI แปลภาษาทางการแพทย์", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 5", "กลุ่ม 6"], desc: "ระบบถอดความและแปลภาษาแบบเรียลไทม์เพื่อสื่อสารกับผู้ป่วยต่างชาติ", consensus: true },
+            { id: 9, name: "Center Monitor bed side", quadrant: "high_front", groups: ["กลุ่ม 7", "กลุ่ม 1"], desc: "รวมศูนย์มอนิเตอร์สัญญาณชีพผู้ป่วยวิกฤตไว้ที่เคาน์เตอร์พยาบาลด่านหน้า", consensus: true },
+            { id: 10, name: "ระบบบริหารจัดการ ERP", quadrant: "low_back", groups: ["กลุ่ม 7"], desc: "วางแผนทรัพยากร การเงิน การพัสดุและกำลังคนภายในหลังบ้าน", consensus: false },
+            { id: 11, name: "ระบบ E-office / Document Flow", quadrant: "low_back", groups: ["กลุ่ม 7"], desc: "ระบบสารบรรณและการอนุมัติเอกสารอิเล็กทรอนิกส์ลดกระดาษ", consensus: false },
+            { id: 12, name: "Face ID / Finger Scan ลงเวลาเข้างาน", quadrant: "low_back", groups: ["กลุ่ม 7", "กลุ่ม 1", "กลุ่ม 2", "กลุ่ม 4", "กลุ่ม 6"], desc: "บันทึกเวลาปฏิบัติงานของบุคลากรด้วยความแม่นยำและรวดเร็ว", consensus: true },
+            { id: 13, name: "ระบบรับ-ส่งผู้ป่วย (แอปเปลนอน)", quadrant: "low_back", groups: ["กลุ่ม 7"], desc: "บริหารตารางงานพนักงานเวชระเบียนและพนักงานเปลลดเวลารอคอย", consensus: false },
+            { id: 14, name: "Line สื่อสารองค์กรและแพทย์", quadrant: "low_back", groups: ["กลุ่ม 7"], desc: "กลุ่มแพลตฟอร์มแชตเฉพาะกิจเพื่อความรวดเร็วในการปรึกษาเคสภายใน", consensus: false },
+            { id: 15, name: "Alert Lab ผิดปกติผ่านทาง App", quadrant: "low_front", groups: ["กลุ่ม 7", "กลุ่ม 6"], desc: "แจ้งเตือนค่าวิกฤตทางห้องแล็บเข้าสมาร์ทโฟนแพทย์เจ้าของไข้ทันที", consensus: true },
+            { id: 16, name: "Dashboard พยากรณ์โรคและสถิติ", quadrant: "low_front", groups: ["กลุ่ม 7", "กลุ่ม 1", "กลุ่ม 5"], desc: "หน้าจอแสดงผลสถานการณ์และยอดผู้ป่วยประจำวันสำหรับผู้บริหาร", consensus: true },
+            { id: 17, name: "Auto Print สัญญาณชีพ Record", quadrant: "low_front", groups: ["กลุ่ม 7"], desc: "ดึงค่าสัญญาณชีพจากเครื่องวัดเข้าสู่ฐานข้อมูลประวัติการรักษาอัติโนมัติ", consensus: false },
+            { id: 18, name: "QR-code ข้อมูลแนะนำการใช้ยา", quadrant: "low_front", groups: ["กลุ่ม 7"], desc: "คนไข้สแกนเพื่อรับชมวิดีโออธิบายวิธีใช้ยาพึงระวังบนมือถือตนเอง", consensus: false },
+            { id: 19, name: "ระบบบริหารที่จอดรถอัจฉริยะ", quadrant: "low_front", groups: ["กลุ่ม 7"], desc: "เซนเซอร์ตรวจจับช่องว่างและนำทางจุดจอดรถเพื่ออำนวยความสะดวกผู้มาติดต่อ", consensus: false },
+            { id: 20, name: "QR-code แสกน authen สิทธิ์การรักษา", quadrant: "low_front", groups: ["กลุ่ม 7", "กลุ่ม 5", "กลุ่ม 1"], desc: "ตรวจสอบและยืนยันสิทธิ์บัตรทอง/ประกันสังคมทันใจผ่านการสแกนคิวอาร์", consensus: true },
+            { id: 21, name: "Alert แจ้งเตือนแพ้ยา / Drug Interaction", quadrant: "low_front", groups: ["กลุ่ม 7", "กลุ่ม 4", "กลุ่ม 5", "กลุ่ม 6"], desc: "ระบบแจ้งเตือนความปลอดภัยทันทีเมื่อแพทย์สั่งยาที่คนไข้มีประวัติแพ้", consensus: true },
+            { id: 22, name: "App Patient Identification ยืนยันตัว", quadrant: "high_back", groups: ["กลุ่ม 5", "กลุ่ม 4", "กลุ่ม 6"], desc: "เช็กความถูกต้องของถุงเลือด ถุงไตเทียม และตัวตนผู้ป่วยก่อนทำหัตถการ", consensus: true }
         ];
 
-        // 2. STABLE GRID COORDINATE GENERATOR (Prevents overlap on GitHub Pages)
-        // Groups coordinates based on quadrant to form a clean, readable pattern.
-        const quadrantCounters = { high_back: 0, high_front: 0, low_back: 0, low_front: 0 };
-        
-        // Grid spacing constants
-        const colsPerQuad = 4;
-        const spacingX = 18;
-        const spacingY = 18;
+        // Core Strategic Distribution Logic (Grid Layout to prevent element stacking)
+        const quadCounters = { high_back: 0, high_front: 0, low_back: 0, low_front: 0 };
+        const dataset = rawDataset.map(item => {
+            const q = item.quadrant;
+            const count = quadCounters[q];
+            quadCounters[q]++;
+            
+            const row = Math.floor(count / 4);
+            const col = count % 4;
+            let bx, by;
 
-        const dataset = originalDataset.map(item => {
-            const quad = item.quadrant;
-            const idx = quadrantCounters[quad];
-            quadrantCounters[quad] += 1;
+            if (q === "high_back") { bx = 12 + col * 18; by = 12 + row * 18; }
+            else if (q === "high_front") { bx = 55 + col * 18; by = 12 + row * 18; }
+            else if (q === "low_back") { bx = 12 + col * 18; by = 55 + row * 18; }
+            else { bx = 55 + col * 18; by = 55 + row * 18; }
 
-            // Row and Col in 2D quadrant space
-            const r = Math.floor(idx / colsPerQuad);
-            const c = idx % colsPerQuad;
-
-            let baseX, baseY;
-            switch(quad) {
-                case "high_back": // Top-Left
-                    baseX = 12 + c * spacingX;
-                    baseY = 12 + r * spacingY;
-                    break;
-                case "high_front": // Top-Right
-                    baseX = 54 + c * spacingX;
-                    baseY = 12 + r * spacingY;
-                    break;
-                case "low_back": // Bottom-Left
-                    baseX = 12 + c * spacingX;
-                    baseY = 54 + r * spacingY;
-                    break;
-                case "low_front": // Bottom-Right
-                    baseX = 54 + c * spacingX;
-                    baseY = 54 + r * spacingY;
-                    break;
-                default:
-                    baseX = 50;
-                    baseY = 50;
-            }
-
-            // Ensure they are strictly constrained in visual canvas
-            const x = Math.max(6, Math.min(94, baseX));
-            const y = Math.max(6, Math.min(94, baseY));
-
-            return { ...item, x, y };
+            return { ...item, x: Math.min(92, bx), y: Math.min(92, by) };
         });
 
-        // Current Active States
-        let currentFilterGroup = "ทั้งหมด";
-        let searchQuery = "";
-        let directoryViewMode = "all"; 
-        let selectedItemId = 1; 
-
-        // Get groups dynamically
-        const allGroups = ["ทั้งหมด", ...new Set(dataset.flatMap(item => item.groups))].sort();
-
-        // 3. COLOR PALETTES FOR QUADRANTS
-        const quadrantStyles = {
-            "high_back": {
-                bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200", dot: "bg-emerald-500",
-                thai: "ผลกระทบต่อคนไข้สูง | ด่านหลัง (Clinical Intelligence / Back-end High Impact)"
-            },
-            "high_front": {
-                bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200", dot: "bg-blue-500",
-                thai: "ผลกระทบต่อคนไข้สูง | ด่านหน้า (Frontline High Impact)"
-            },
-            "low_back": {
-                bg: "bg-slate-50", text: "text-slate-700", border: "border-slate-200", dot: "bg-slate-500",
-                thai: "ผลกระทบต่ำ | ด่านหลัง (Administrative / Operational Foundation)"
-            },
-            "low_front": {
-                bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200", dot: "bg-amber-500",
-                thai: "ผลกระทบต่ำ | ด่านหน้า (Patient Convenience / Speedup)"
-            }
+        const quadNames = {
+            "high_back": "High Impact | Back-office",
+            "high_front": "High Impact | Frontline",
+            "low_back": "Low Impact | Back-office",
+            "low_front": "Low Impact | Frontline"
         };
 
-        // 4. MAIN INIT FUNCTION
+        let searchQuery = "";
+        let selectedGroup = "ทั้งหมด";
+        let activeSelectedId = 1;
+
         window.onload = function() {
             renderGroupFilters();
-            updateDashboard();
-            selectItem(1); 
-        }
+            runAdvancedAnalytics();
+            updateView();
+            selectItem(1);
+        };
 
-        // Dark mode simulation toggle
-        let darkModeActive = false;
-        function toggleDarkMode() {
-            darkModeActive = !darkModeActive;
-            const body = document.body;
-            const panels = document.querySelectorAll('.bg-white');
-            
-            if (darkModeActive) {
-                body.classList.remove('bg-slate-50', 'text-slate-800');
-                body.classList.add('bg-slate-900', 'text-slate-100');
-                panels.forEach(p => {
-                    p.classList.remove('bg-white');
-                    p.classList.add('bg-slate-800', 'text-slate-100', 'border-slate-700');
-                });
-                document.getElementById('darkModeBtn').innerHTML = '<i class="fa-solid fa-sun text-amber-400"></i>';
+        // --- NEW BUSINESS INTELLIGENCE ANALYTICS MODULE ---
+        function runAdvancedAnalytics() {
+            // A. Gap Analysis Calculation
+            const totals = { high_back: 0, high_front: 0, low_back: 0, low_front: 0 };
+            dataset.forEach(item => totals[item.quadrant]++);
+            const totalItems = dataset.length;
+
+            const gapContainer = document.getElementById('gapAnalysisBars');
+            gapContainer.innerHTML = '';
+
+            const colors = {
+                high_back: 'bg-emerald-500', high_front: 'bg-blue-500',
+                low_back: 'bg-slate-400', low_front: 'bg-amber-500'
+            };
+
+            Object.keys(totals).forEach(key => {
+                const count = totals[key];
+                const percentage = Math.round((count / totalItems) * 100) || 0;
+                
+                gapContainer.innerHTML += `
+                    <div>
+                        <div class="flex justify-between text-xs font-medium mb-1">
+                            <span>${quadNames[key]} (${count} ระบบ)</span>
+                            <span class="font-bold text-slate-700">${percentage}%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="${colors[key]} h-full" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // B. Automated Advice Logic Based on Data Shape
+            const adviceBox = document.getElementById('strategicAdviceBox');
+            if(totals.high_front > totals.high_back) {
+                adviceBox.className += " bg-blue-50 text-blue-800 border-l-4 border-blue-500";
+                adviceBox.innerHTML = `<strong>💡 บทวิเคราะห์เชิงยุทธศาสตร์:</strong> โฟกัสหลักของโรงพยาบาลในขณะนี้มุ่งเน้นไปที่ <u>ระบบด่านหน้าที่ส่งผลต่อคนไข้ (Frontline Impact)</u> ซึ่งดีต่อความพึงพอใจ แนะนำให้เพิ่มระบบความปลอดภัยหลังบ้าน (Clinical Back-office AI) ควบคู่ไปด้วยเพื่อความสมดุลระยะยาว`;
             } else {
-                body.classList.remove('bg-slate-900', 'text-slate-100');
-                body.classList.add('bg-slate-50', 'text-slate-800');
-                panels.forEach(p => {
-                    p.classList.remove('bg-slate-800', 'text-slate-100', 'border-slate-700');
-                    p.classList.add('bg-white');
-                });
-                document.getElementById('darkModeBtn').innerHTML = '<i class="fa-solid fa-moon"></i>';
+                adviceBox.className += " bg-emerald-50 text-emerald-800 border-l-4 border-emerald-500";
+                adviceBox.innerHTML = `<strong>💡 บทวิเคราะห์เชิงยุทธศาสตร์:</strong> มีสัดส่วนของโครงสร้างพื้นฐานและการวินิจฉัยแพทย์หลังบ้านสูงมาก มีความมั่นคงในมิติรักษาพยาบาล ควรเลือกนำระบบด่านหน้าประเภท Quick-wins (เช่น คีออส หรือ ไลน์แจ้งเตือน) มาเสริมเพื่อให้ผู้ป่วยสัมผัสได้ถึงการเปลี่ยนแปลงทันที`;
             }
-        }
 
-        // Render filtering buttons
-        function renderGroupFilters() {
-            const container = document.getElementById('groupFilterContainer');
-            container.innerHTML = '<span class="text-xs font-semibold text-slate-500 mr-2">กลุ่มระดมสมอง:</span>';
-            
-            allGroups.forEach(group => {
-                const btn = document.createElement('button');
-                btn.className = `px-3 py-1.5 rounded-full text-xs font-medium transition duration-150 ${
-                    currentFilterGroup === group 
-                    ? 'bg-blue-600 text-white shadow-sm' 
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-                }`;
-                btn.innerText = group;
-                btn.onclick = () => filterByGroup(group);
-                container.appendChild(btn);
+            // C. Keyword Frequency Analysis (Word Cloud Simulation)
+            const textToAnalyze = dataset.map(i => i.name).join(' ');
+            const keywords = ['AI', 'Robot', 'QR-code', 'App', 'Line', 'Alert', 'Queue', 'Dashboard', 'Scan'];
+            const cloudContainer = document.getElementById('keywordCloudContainer');
+            cloudContainer.innerHTML = '';
+
+            keywords.forEach((word, index) => {
+                const count = (textToAnalyze.match(new RegExp(word, "gi")) || []).length;
+                if(count > 0) {
+                    const sizes = ['text-[10px] bg-slate-100 text-slate-600', 'text-xs bg-indigo-50 text-indigo-700 font-semibold', 'text-sm bg-blue-50 text-blue-700 font-bold'];
+                    const sizeStyle = count > 3 ? sizes[2] : count > 1 ? sizes[1] : sizes[0];
+                    cloudContainer.innerHTML += `<span class="px-2 py-1 rounded-lg ${sizeStyle} border border-black/5 flex items-center gap-1">#${word} <span class="opacity-60 text-[9px]">(${count})</span></span>`;
+                }
             });
         }
 
-        // Filter Handlers
-        function filterByGroup(groupName) {
-            currentFilterGroup = groupName;
-            renderGroupFilters();
-            updateDashboard();
-            document.getElementById('matrixViewLabel').innerText = `แสดงข้อมูล: ${groupName}`;
+        function renderGroupFilters() {
+            const groups = ["ทั้งหมด", ...new Set(dataset.flatMap(i => i.groups))].sort();
+            const container = document.getElementById('groupFilterContainer');
+            container.innerHTML = '<span class="text-xs font-semibold text-slate-400 mr-1">กลุ่มระดมสมอง:</span>';
+            
+            groups.forEach(g => {
+                const active = selectedGroup === g;
+                container.innerHTML += `
+                    <button onclick="filterGroup('${g}')" class="px-2.5 py-1 rounded-xl text-xs font-medium transition whitespace-nowrap ${active ? 'bg-indigo-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}">
+                        ${g}
+                    </button>
+                `;
+            });
         }
 
-        function handleSearch(val) {
-            searchQuery = val.trim().toLowerCase();
-            updateDashboard();
-        }
+        function filterGroup(g) { selectedGroup = g; renderGroupFilters(); updateView(); }
+        function handleSearch(val) { searchQuery = val.trim().toLowerCase(); updateView(); }
+        function resetFilters() { searchQuery = ""; selectedGroup = "ทั้งหมด"; document.getElementById('searchInput').value = ""; renderGroupFilters(); updateView(); }
 
-        function changeDirView(mode) {
-            directoryViewMode = mode;
-            const allBtn = document.getElementById('dirAllBtn');
-            const highBtn = document.getElementById('dirHighBtn');
-            if (mode === 'all') {
-                allBtn.className = "px-3 py-1.5 rounded-lg font-medium transition bg-blue-500 text-white";
-                highBtn.className = "px-3 py-1.5 rounded-lg font-medium transition bg-slate-100 hover:bg-slate-200 text-slate-700";
-            } else {
-                allBtn.className = "px-3 py-1.5 rounded-lg font-medium transition bg-slate-100 hover:bg-slate-200 text-slate-700";
-                highBtn.className = "px-3 py-1.5 rounded-lg font-medium transition bg-blue-500 text-white";
-            }
-            renderDirectoryTable();
-        }
-
-        function resetFilters() {
-            currentFilterGroup = "ทั้งหมด";
-            searchQuery = "";
-            document.getElementById('searchInput').value = "";
-            directoryViewMode = "all";
-            renderGroupFilters();
-            changeDirView('all');
-            updateDashboard();
-        }
-
-        // Get current filtered data
         function getFilteredData() {
             return dataset.filter(item => {
-                const matchesGroup = currentFilterGroup === "ทั้งหมด" || item.groups.includes(currentFilterGroup);
-                const matchesSearch = item.name.toLowerCase().includes(searchQuery) || 
-                                      item.desc.toLowerCase().includes(searchQuery) ||
-                                      item.groups.some(g => g.toLowerCase().includes(searchQuery));
-                return matchesGroup && matchesSearch;
+                const mGroup = selectedGroup === "ทั้งหมด" || item.groups.includes(selectedGroup);
+                const mSearch = item.name.toLowerCase().includes(searchQuery) || item.desc.toLowerCase().includes(searchQuery);
+                return mGroup && mSearch;
             });
         }
 
-        // 5. CORE RENDER LOGIC
-        function updateDashboard() {
+        function updateView() {
             const filtered = getFilteredData();
             
             document.getElementById('totalCount').innerText = filtered.length;
@@ -522,177 +362,122 @@
             document.getElementById('frontlineCount').innerText = filtered.filter(i => i.quadrant.endsWith('front')).length;
             document.getElementById('consensusCount').innerText = filtered.filter(i => i.consensus).length;
 
-            renderMatrixDots(filtered);
-            renderConsensusRankings(filtered);
-            renderDirectoryTable();
+            renderDots(filtered);
+            renderConsensus(filtered);
+            renderTable(filtered);
         }
 
-        // Render coordinates on 2D space
-        function renderMatrixDots(items) {
+        function renderDots(items) {
             const container = document.getElementById('dotPlotContainer');
             container.innerHTML = '';
+            
+            const dotColors = { high_back: 'bg-emerald-500', high_front: 'bg-blue-500', low_back: 'bg-slate-500', low_front: 'bg-amber-500' };
 
             items.forEach(item => {
+                const selected = item.id === activeSelectedId;
                 const dot = document.createElement('button');
-                const styles = quadrantStyles[item.quadrant];
-                
-                const isSelected = item.id === selectedItemId;
-                const ringClass = isSelected 
-                    ? 'ring-4 ring-offset-2 ring-indigo-600 scale-125 z-30' 
-                    : 'hover:scale-110 z-10';
-
-                const sizeClass = item.consensus ? 'w-5 h-5' : 'w-4 h-4';
-
-                dot.className = `absolute rounded-full ${styles.dot} ${sizeClass} ${ringClass} cursor-pointer transition-all duration-150 flex items-center justify-center border-2 border-white text-[9px] text-white font-bold shadow-md`;
+                dot.className = `absolute rounded-full ${dotColors[item.quadrant]} ${item.consensus ? 'w-5 h-5':'w-4 h-4'} ${selected ? 'ring-4 ring-offset-2 ring-indigo-600 scale-125 z-30':'hover:scale-110'} shadow-md transition-all flex items-center justify-center border border-white text-[9px] text-white font-bold`;
                 dot.style.left = `${item.x}%`;
                 dot.style.top = `${item.y}%`;
-                dot.title = item.name;
-                
                 dot.innerText = item.consensus ? "★" : "";
-
                 dot.onclick = () => selectItem(item.id);
                 container.appendChild(dot);
             });
         }
 
-        // Render consensus ranked list on right panel
-        function renderConsensusRankings(filteredItems) {
-            const listContainer = document.getElementById('consensusList');
-            listContainer.innerHTML = '';
-
-            const sortedConsensus = originalDataset
-                .filter(i => i.groups.length > 1)
-                .sort((a,b) => b.groups.length - a.groups.length);
-
-            if (sortedConsensus.length === 0) {
-                listContainer.innerHTML = '<p class="text-xs text-slate-400 py-4 text-center">ไม่มีรายการสอดคล้องกันตามเงื่อนไข</p>';
+        function renderConsensus(items) {
+            const list = document.getElementById('consensusList');
+            list.innerHTML = '';
+            
+            const consensusItems = items.filter(i => i.consensus).sort((a,b) => b.groups.length - a.groups.length);
+            if(consensusItems.length === 0) {
+                list.innerHTML = '<p class="text-[11px] text-slate-400 py-4 text-center">ไม่พบรายการซ้ำภายใต้ตัวกรองนี้</p>';
                 return;
             }
 
-            sortedConsensus.forEach(item => {
-                const isSelected = item.id === selectedItemId;
-                const activeStyle = isSelected ? 'bg-indigo-50 border-l-4 border-indigo-500' : 'hover:bg-slate-50';
-                
-                const div = document.createElement('div');
-                div.className = `p-3 transition cursor-pointer flex items-center justify-between ${activeStyle}`;
-                div.onclick = () => selectItem(item.id);
-
-                div.innerHTML = `
-                    <div class="space-y-0.5 pr-2">
-                        <p class="font-semibold text-xs text-slate-800">${item.name}</p>
-                        <p class="text-[10px] text-slate-500">เสนอโดย: ${item.groups.join(', ')}</p>
-                    </div>
-                    <div class="flex items-center gap-1">
-                        <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full flex items-center gap-1">
-                            <i class="fa-solid fa-users"></i> ${item.groups.length} กลุ่ม
-                        </span>
+            consensusItems.forEach(item => {
+                const active = item.id === activeSelectedId;
+                list.innerHTML += `
+                    <div onclick="selectItem(${item.id})" class="p-2 text-xs cursor-pointer transition ${active ? 'bg-indigo-50 font-semibold text-indigo-900 border-l-2 border-indigo-500': 'hover:bg-slate-50'} flex justify-between items-center">
+                        <div>
+                            <p class="text-slate-800">${item.name}</p>
+                            <span class="text-[9px] text-slate-400 font-normal">เสนอร่วม: ${item.groups.join(', ')}</span>
+                        </div>
+                        <span class="bg-amber-100 text-amber-800 text-[9px] px-1.5 py-0.5 rounded font-bold">${item.groups.length} กลุ่ม</span>
                     </div>
                 `;
-                listContainer.appendChild(div);
             });
         }
 
-        // Render bottom full table directory
-        function renderDirectoryTable() {
-            const tableBody = document.getElementById('directoryTableBody');
-            tableBody.innerHTML = '';
+        function renderTable(items) {
+            const tbody = document.getElementById('directoryTableBody');
+            tbody.innerHTML = '';
 
-            let dataToRender = getFilteredData();
-            if (directoryViewMode === 'high_impact') {
-                dataToRender = dataToRender.filter(i => i.quadrant.startsWith('high'));
+            if(items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="py-4 text-center text-slate-400">ไม่พบข้อมูลการจับคู่กลยุทธ์</td></tr>';
+                return;
             }
 
-            if (dataToRender.length === 0) {
-                tableBody.innerHTML = `
-                    <tr>
-                        <td colspan="5" class="py-6 text-center text-slate-400 text-xs">
-                            <i class="fa-solid fa-folder-open text-2xl mb-2 block text-slate-300"></i> ไม่พบรายชื่อเทคโนโลยีที่ค้นหา
+            items.forEach(item => {
+                const active = item.id === activeSelectedId;
+                tbody.innerHTML += `
+                    <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition cursor-pointer ${active ? 'bg-indigo-50/50' : ''}" onclick="selectItem(${item.id})">
+                        <td class="py-2.5 font-medium text-slate-900 flex items-center gap-1.5">
+                            ${item.consensus ? '<i class="fa-solid fa-star text-amber-500"></i>': '<i class="fa-solid fa-circle text-[6px] text-slate-300"></i>'}
+                            <span>${item.name}</span>
+                        </td>
+                        <td class="py-2.5 text-slate-500">${quadNames[item.quadrant]}</td>
+                        <td class="py-2.5 text-slate-400">${item.groups.join(', ')}</td>
+                        <td class="py-2.5 text-center">
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${item.quadrant.startsWith('high') ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-600'}">
+                                ${item.quadrant.startsWith('high') ? 'สูง':'ทั่วไป'}
+                            </span>
                         </td>
                     </tr>
                 `;
-                return;
-            }
-
-            dataToRender.forEach(item => {
-                const styles = quadrantStyles[item.quadrant];
-                const isHighImpact = item.quadrant.startsWith('high');
-                const isSelected = item.id === selectedItemId;
-                
-                const tr = document.createElement('tr');
-                tr.className = `border-b border-slate-100 text-xs hover:bg-slate-50 transition ${isSelected ? 'bg-indigo-50/50' : ''}`;
-                
-                tr.innerHTML = `
-                    <td class="py-3 font-medium text-slate-900 cursor-pointer" onclick="selectItem(${item.id})">
-                        <div class="flex items-center gap-2">
-                            ${item.consensus ? '<i class="fa-solid fa-star text-amber-500" title="Consensus"></i>' : '<i class="fa-solid fa-cube text-slate-400"></i>'}
-                            <span>${item.name}</span>
-                        </div>
-                    </td>
-                    <td class="py-3">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium ${styles.bg} ${styles.text}">
-                            ${item.quadrant === 'high_back' ? 'High Impact | Back-office' : 
-                              item.quadrant === 'high_front' ? 'High Impact | Frontline' : 
-                              item.quadrant === 'low_back' ? 'Low Impact | Back-office' : 'Low Impact | Frontline'}
-                        </span>
-                    </td>
-                    <td class="py-3 text-slate-500 max-w-[120px] truncate" title="${item.groups.join(', ')}">
-                        ${item.groups.join(', ')}
-                    </td>
-                    <td class="py-3 text-center">
-                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${isHighImpact ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-700'}">
-                            ${isHighImpact ? 'สูง (High)' : 'ทั่วไป (Low)'}
-                        </span>
-                    </td>
-                    <td class="py-3 text-right">
-                        <button onclick="selectItem(${item.id})" class="text-indigo-600 hover:text-indigo-900 font-semibold text-[11px] hover:underline">
-                            ดูวิเคราะห์ &rarr;
-                        </button>
-                    </td>
-                `;
-                tableBody.appendChild(tr);
             });
         }
 
-        // 6. DETAILED VIEW PANEL HANDLER
-        function selectItem(itemId) {
-            selectedItemId = itemId;
-            const item = originalDataset.find(i => i.id === itemId);
-            if (!item) return;
+        function selectItem(id) {
+            activeSelectedId = id;
+            const item = dataset.find(i => i.id === id);
+            if(!item) return;
 
-            const styles = quadrantStyles[item.quadrant];
-
-            const titleEl = document.getElementById('detailTitle');
-            const descEl = document.getElementById('detailDesc');
-            const quadBadge = document.getElementById('detailQuadBadge');
-            const groupBadge = document.getElementById('detailGroupBadge');
-            const consensusEl = document.getElementById('detailConsensus');
-
-            titleEl.innerText = item.name;
-            descEl.innerText = item.desc;
+            document.getElementById('detailTitle').innerText = item.name;
+            document.getElementById('detailDesc').innerText = item.desc + " - แหล่งข้อมูลจากการวิเคราะห์รายกลุ่มเสนอ เพื่อประกอบการทำแผนแม่บทเทคโนโลยีสารสนเทศของโรงพยาบาล";
             
-            quadBadge.innerText = styles.thai;
-            quadBadge.className = `text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${styles.bg} ${styles.text} border ${styles.border}`;
+            const qBadge = document.getElementById('detailQuadBadge');
+            qBadge.innerText = quadNames[item.quadrant];
             
-            groupBadge.innerText = `เสนอโดย: ${item.groups.join(', ')}`;
+            const dotColors = { high_back: 'bg-emerald-100 text-emerald-800', high_front: 'bg-blue-100 text-blue-800', low_back: 'bg-slate-100 text-slate-800', low_front: 'bg-amber-100 text-amber-800' };
+            qBadge.className = `text-[10px] font-bold px-2 py-0.5 rounded-full ${dotColors[item.quadrant]}`;
+            
+            document.getElementById('detailGroupBadge').innerText = `ผู้เสนอ: ${item.groups.join(', ')}`;
+            document.getElementById('detailConsensus').innerHTML = item.consensus 
+                ? `<span class="text-amber-600 font-bold"><i class="fa-solid fa-circle-check"></i> ระบบยุทธศาสตร์หลัก (ระดมสมองซ้ำกัน)</span>` 
+                : `<span class="text-slate-400">ไอเดียริเริ่มเฉพาะหน่วย</span>`;
 
-            if (item.consensus) {
-                consensusEl.innerHTML = `<span class="text-amber-600 font-bold"><i class="fa-solid fa-fire"></i> ระบบประเมินร่วมกัน ${item.groups.length} กลุ่ม</span>`;
-            } else {
-                consensusEl.innerText = "แนวคิดนวัตกรรมเฉพาะหน่วยงาน";
-            }
-
-            document.getElementById('viewAllSimilarBtn').onclick = () => {
-                const keyword = item.name.split(' ')[0].split('/')[0];
-                document.getElementById('searchInput').value = keyword;
-                handleSearch(keyword);
-            };
-
+            // Refresh highlights without full layout calculation
             const filtered = getFilteredData();
-            renderMatrixDots(filtered);
-            renderConsensusRankings(filtered);
-            
-            if (window.innerWidth < 1024) {
-                document.getElementById('detailDisplayPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            renderDots(filtered);
+            renderConsensus(filtered);
+        }
+
+        let isDark = false;
+        function toggleDarkMode() {
+            isDark = !isDark;
+            const body = document.body;
+            const cards = document.querySelectorAll('.bg-white');
+            if(isDark) {
+                body.classList.replace('bg-slate-50', 'bg-slate-900');
+                body.classList.add('text-slate-100');
+                cards.forEach(c => c.classList.replace('bg-white', 'bg-slate-800'));
+                document.getElementById('darkModeBtn').innerHTML = '<i class="fa-solid fa-sun text-amber-400"></i>';
+            } else {
+                body.classList.replace('bg-slate-900', 'bg-slate-50');
+                body.classList.remove('text-slate-100');
+                cards.forEach(c => c.classList.replace('bg-slate-800', 'bg-white'));
+                document.getElementById('darkModeBtn').innerHTML = '<i class="fa-solid fa-moon"></i>';
             }
         }
     </script>
