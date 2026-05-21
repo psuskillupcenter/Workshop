@@ -8,7 +8,7 @@
     
     <title>Hospital AI Analytics & Mapping Dashboard</title>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com/"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts (Sarabun) -->
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <!-- NEW AUTOMATED STRATEGIC INSIGHTS & GAP ANALYSIS PANEL -->
+        <!-- AUTOMATED STRATEGIC INSIGHTS & GAP ANALYSIS PANEL -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <!-- Strategic Balance Analysis -->
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 lg:col-span-2 flex flex-col justify-between">
@@ -202,22 +202,24 @@
             </div>
         </div>
 
-        <!-- FULL LIST DATA DIRECTORY -->
+        <!-- FULL LIST DATA DIRECTORY (UPDATED HIGH CONTRAST & DARK TEXT COLORS) -->
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
-            <h3 class="font-bold text-slate-800 flex items-center gap-2 mb-4 text-base">
+            <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-4 text-lg">
                 <i class="fa-solid fa-list-check text-indigo-600"></i> 4. ทำเนียบและแผนการจำแนกข้อมูลระบบเทคโนโลยีทั้งหมด
             </h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs border-collapse">
+            <div class="overflow-x-auto rounded-xl border-2 border-slate-300 dark:border-slate-700 shadow-md">
+                <table class="w-full text-left text-sm border-collapse">
                     <thead>
-                        <tr class="border-b border-slate-200 text-slate-400 font-semibold uppercase">
-                            <th class="pb-2">ชื่อระบบ / เทคโนโลยี</th>
-                            <th class="pb-2">มิติเชิงยุทธศาสตร์</th>
-                            <th class="pb-2">กลุ่มระดมสมอง</th>
-                            <th class="pb-2 text-center">ระดับผลกระทบ</th>
+                        <!-- Enhanced Header styling with premium dark slate slate background & bright white text -->
+                        <tr class="border-b-2 border-slate-300 dark:border-slate-600 bg-slate-800 text-white font-bold uppercase tracking-wider text-xs">
+                            <th class="py-3.5 px-5">ชื่อระบบ / เทคโนโลยี</th>
+                            <th class="py-3.5 px-5">มิติเชิงยุทธศาสตร์ (Quadrant)</th>
+                            <th class="py-3.5 px-5">กลุ่มระดมสมองที่เสนอ</th>
+                            <th class="py-3.5 px-5 text-center">ระดับผลกระทบ</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 text-slate-600" id="directoryTableBody"></tbody>
+                    <!-- Enhanced text hierarchy with rich high-contrast dark tones -->
+                    <tbody class="divide-y divide-slate-300 dark:divide-slate-700 text-slate-900 dark:text-slate-100 bg-white" id="directoryTableBody"></tbody>
                 </table>
             </div>
         </div>
@@ -279,6 +281,13 @@
             "low_front": "Low Impact | Frontline"
         };
 
+        const quadBadgeColors = {
+            "high_back": "bg-emerald-700 text-white font-bold border border-emerald-800",
+            "high_front": "bg-blue-700 text-white font-bold border border-blue-800",
+            "low_back": "bg-slate-700 text-white font-bold border border-slate-800",
+            "low_front": "bg-amber-600 text-slate-950 font-bold border border-amber-700"
+        };
+
         let searchQuery = "";
         let selectedGroup = "ทั้งหมด";
         let activeSelectedId = 1;
@@ -312,10 +321,10 @@
                 gapContainer.innerHTML += `
                     <div>
                         <div class="flex justify-between text-xs font-medium mb-1">
-                            <span>${quadNames[key]} (${count} ระบบ)</span>
-                            <span class="font-bold text-slate-700 dark:text-slate-200">${percentage}%</span>
+                            <span class="font-bold text-slate-800 dark:text-slate-200">${quadNames[key]} (${count} ระบบ)</span>
+                            <span class="font-bold text-slate-950 dark:text-slate-100">${percentage}%</span>
                         </div>
-                        <div class="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+                        <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
                             <div class="${colors[key]} h-full" style="width: ${percentage}%"></div>
                         </div>
                     </div>
@@ -325,10 +334,10 @@
             // B. Automated Advice Logic Based on Data Shape
             const adviceBox = document.getElementById('strategicAdviceBox');
             if(totals.high_front > totals.high_back) {
-                adviceBox.className = "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-blue-50 text-blue-800 border-l-4 border-blue-500";
+                adviceBox.className = "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-blue-50 text-blue-900 border-l-4 border-blue-600 font-medium";
                 adviceBox.innerHTML = `<strong>💡 บทวิเคราะห์เชิงยุทธศาสตร์:</strong> โฟกัสหลักของโรงพยาบาลในขณะนี้มุ่งเน้นไปที่ <u>ระบบด่านหน้าที่ส่งผลต่อคนไข้ (Frontline Impact)</u> ซึ่งดีต่อความพึงพอใจ แนะนำให้เพิ่มระบบความปลอดภัยหลังบ้าน (Clinical Back-office AI) ควบคู่ไปด้วยเพื่อความสมดุลระยะยาว`;
             } else {
-                adviceBox.className = "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-emerald-50 text-emerald-800 border-l-4 border-emerald-500";
+                adviceBox.className = "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-emerald-50 text-emerald-900 border-l-4 border-emerald-600 font-medium";
                 adviceBox.innerHTML = `<strong>💡 บทวิเคราะห์เชิงยุทธศาสตร์:</strong> มีสัดส่วนของโครงสร้างพื้นฐานและการวินิจฉัยแพทย์หลังบ้านสูงมาก มีความมั่นคงในมิติรักษาพยาบาล ควรเลือกนำระบบด่านหน้าประเภท Quick-wins (เช่น คีออส หรือ ไลน์แจ้งเตือน) มาเสริมเพื่อให้ผู้ป่วยสัมผัสได้ถึงการเปลี่ยนแปลงทันที`;
             }
 
@@ -341,9 +350,9 @@
             keywords.forEach((word) => {
                 const count = (textToAnalyze.match(new RegExp(word, "gi")) || []).length;
                 if(count > 0) {
-                    const sizes = ['text-[10px] bg-slate-100 text-slate-600', 'text-xs bg-indigo-50 text-indigo-700 font-semibold', 'text-sm bg-blue-50 text-blue-700 font-bold'];
+                    const sizes = ['text-[10px] bg-slate-200 text-slate-800 border border-slate-300', 'text-xs bg-indigo-100 text-indigo-900 font-bold border border-indigo-200', 'text-sm bg-blue-100 text-blue-950 font-black border border-blue-200'];
                     const sizeStyle = count > 3 ? sizes[2] : count > 1 ? sizes[1] : sizes[0];
-                    cloudContainer.innerHTML += `<span class="px-2 py-1 rounded-lg ${sizeStyle} border border-black/5 flex items-center gap-1">#${word} <span class="opacity-60 text-[9px]">(${count})</span></span>`;
+                    cloudContainer.innerHTML += `<span class="px-2 py-1 rounded-lg ${sizeStyle} flex items-center gap-1 shadow-sm">#${word} <span class="opacity-75 text-[9.5px]">(${count})</span></span>`;
                 }
             });
         }
@@ -351,12 +360,12 @@
         function renderGroupFilters() {
             const groups = ["ทั้งหมด", ...new Set(dataset.flatMap(i => i.groups))].sort();
             const container = document.getElementById('groupFilterContainer');
-            container.innerHTML = '<span class="text-xs font-semibold text-slate-400 mr-1">กลุ่มระดมสมอง:</span>';
+            container.innerHTML = '<span class="text-xs font-semibold text-slate-500 mr-1">กลุ่มระดมสมอง:</span>';
             
             groups.forEach(g => {
                 const active = selectedGroup === g;
                 container.innerHTML += `
-                    <button onclick="filterGroup('${g}')" class="px-2.5 py-1 rounded-xl text-xs font-medium transition whitespace-nowrap ${active ? 'bg-indigo-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}">
+                    <button onclick="filterGroup('${g}')" class="px-2.5 py-1 rounded-xl text-xs font-bold transition whitespace-nowrap border ${active ? 'bg-indigo-700 text-white border-indigo-800 shadow-sm' : 'bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-300'}">
                         ${g}
                     </button>
                 `;
@@ -412,46 +421,67 @@
             
             const consensusItems = items.filter(i => i.consensus).sort((a,b) => b.groups.length - a.groups.length);
             if(consensusItems.length === 0) {
-                list.innerHTML = '<p class="text-[11px] text-slate-400 py-4 text-center">ไม่พบรายการซ้ำภายใต้ตัวกรองนี้</p>';
+                list.innerHTML = '<p class="text-[11px] text-slate-500 py-4 text-center">ไม่พบรายการซ้ำภายใต้ตัวกรองนี้</p>';
                 return;
             }
 
             consensusItems.forEach(item => {
                 const active = item.id === activeSelectedId;
                 list.innerHTML += `
-                    <div onclick="selectItem(${item.id})" class="p-2 text-xs cursor-pointer transition ${active ? 'bg-indigo-50 font-semibold text-indigo-900 border-l-2 border-indigo-500 dark:bg-slate-700': 'hover:bg-slate-50 dark:hover:bg-slate-700/50'} flex justify-between items-center">
+                    <div onclick="selectItem(${item.id})" class="p-2.5 text-xs cursor-pointer transition ${active ? 'bg-indigo-100 font-bold text-indigo-950 border-l-4 border-indigo-600 dark:bg-slate-700': 'hover:bg-slate-100 dark:hover:bg-slate-700/50'} flex justify-between items-center">
                         <div>
-                            <p class="text-slate-800 dark:text-slate-100">${item.name}</p>
-                            <span class="text-[9px] text-slate-400 font-normal">เสนอร่วม: ${item.groups.join(', ')}</span>
+                            <p class="text-slate-900 dark:text-slate-100 font-semibold">${item.name}</p>
+                            <span class="text-[9.5px] text-slate-600 font-medium dark:text-slate-400">เสนอร่วม: ${item.groups.join(', ')}</span>
                         </div>
-                        <span class="bg-amber-100 text-amber-800 text-[9px] px-1.5 py-0.5 rounded font-bold">${item.groups.length} กลุ่ม</span>
+                        <span class="bg-amber-200 text-amber-950 text-[9.5px] px-2 py-0.5 rounded font-black border border-amber-300 shadow-sm">${item.groups.length} กลุ่ม</span>
                     </div>
                 `;
             });
         }
 
+        // Updated renderTable with High-Contrast Text, Bold Fonts, Strong-Color Pill Badges, and zebra stripping
         function renderTable(items) {
             const tbody = document.getElementById('directoryTableBody');
             tbody.innerHTML = '';
 
             if(items.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" class="py-4 text-center text-slate-400">ไม่พบข้อมูลการจับคู่กลยุทธ์</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" class="py-5 text-center text-slate-900 dark:text-slate-300 font-bold text-sm">ไม่พบข้อมูลการจับคู่กลยุทธ์</td></tr>';
                 return;
             }
 
-            items.forEach(item => {
+            items.forEach((item, index) => {
                 const active = item.id === activeSelectedId;
+                const badgeStyle = quadBadgeColors[item.quadrant] || 'bg-slate-200 text-slate-800';
+                
+                // Stripe rows for better visual tracking
+                const stripeClass = index % 2 === 0 ? 'bg-white' : 'bg-slate-50';
+                
+                // Active row highlight with distinct indigo left-border and light purple background
+                const activeClass = active 
+                    ? 'bg-indigo-100/90 dark:bg-indigo-900/60 border-l-4 border-indigo-600 font-bold scale-[0.99] shadow-sm' 
+                    : `${stripeClass} hover:bg-slate-150/90 dark:hover:bg-slate-700/50`;
+
                 tbody.innerHTML += `
-                    <tr class="border-b border-slate-100 dark:border-slate-700 hover:bg-slate-50/80 dark:hover:bg-slate-700/50 transition cursor-pointer ${active ? 'bg-indigo-50/50 dark:bg-indigo-900/30' : ''}" onclick="selectItem(${item.id})">
-                        <td class="py-2.5 font-medium text-slate-900 dark:text-white flex items-center gap-1.5">
-                            ${item.consensus ? '<i class="fa-solid fa-star text-amber-500"></i>': '<i class="fa-solid fa-circle text-[6px] text-slate-300"></i>'}
+                    <tr class="transition duration-150 cursor-pointer ${activeClass}" onclick="selectItem(${item.id})">
+                        <!-- System Name - Bold and highly prominent slate-950 text color -->
+                        <td class="py-3 px-5 font-bold text-slate-950 dark:text-white text-sm flex items-center gap-2">
+                            ${item.consensus ? '<i class="fa-solid fa-star text-amber-500 drop-shadow-sm" title="Consensus"></i>': '<i class="fa-solid fa-circle text-[7px] text-slate-500"></i>'}
                             <span>${item.name}</span>
                         </td>
-                        <td class="py-2.5 text-slate-500 dark:text-slate-300">${quadNames[item.quadrant]}</td>
-                        <td class="py-2.5 text-slate-400">${item.groups.join(', ')}</td>
-                        <td class="py-2.5 text-center">
-                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${item.quadrant.startsWith('high') ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-600'}">
-                                ${item.quadrant.startsWith('high') ? 'สูง':'ทั่วไป'}
+                        <!-- Quadrant dimension badge - Vivid strong colors -->
+                        <td class="py-3 px-5">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] uppercase font-bold tracking-wide inline-block ${badgeStyle}">
+                                ${quadNames[item.quadrant]}
+                            </span>
+                        </td>
+                        <!-- Brainstorming Groups - Clear medium grey text -->
+                        <td class="py-3 px-5 text-slate-800 dark:text-slate-200 font-semibold text-xs">
+                            ${item.groups.join(', ')}
+                        </td>
+                        <!-- Level Impact Badge -->
+                        <td class="py-3 px-5 text-center">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-black shadow-sm ${item.quadrant.startsWith('high') ? 'bg-emerald-700 text-white border border-emerald-800' : 'bg-slate-500 text-white border border-slate-600'}">
+                                ${item.quadrant.startsWith('high') ? 'สูง (High)':'ทั่วไป (Low)'}
                             </span>
                         </td>
                     </tr>
@@ -470,17 +500,21 @@
             const qBadge = document.getElementById('detailQuadBadge');
             qBadge.innerText = quadNames[item.quadrant];
             
-            const dotColors = { high_back: 'bg-emerald-100 text-emerald-800', high_front: 'bg-blue-100 text-blue-800', low_back: 'bg-slate-100 text-slate-800', low_front: 'bg-amber-100 text-amber-800' };
-            qBadge.className = `text-[10px] font-bold px-2 py-0.5 rounded-full ${dotColors[item.quadrant]}`;
+            const dotColors = { high_back: 'bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold', high_front: 'bg-blue-100 text-blue-900 border border-blue-300 font-bold', low_back: 'bg-slate-200 text-slate-900 border border-slate-350 font-bold', low_front: 'bg-amber-100 text-amber-950 border border-amber-300 font-bold' };
+            qBadge.className = `text-[10px] font-extrabold px-2.5 py-1 rounded-full ${dotColors[item.quadrant]}`;
             
             document.getElementById('detailGroupBadge').innerText = `ผู้เสนอ: ${item.groups.join(', ')}`;
             document.getElementById('detailConsensus').innerHTML = item.consensus 
-                ? `<span class="text-amber-600 font-bold"><i class="fa-solid fa-circle-check"></i> ระบบยุทธศาสตร์หลัก (ระดมสมองซ้ำกัน)</span>` 
-                : `<span class="text-slate-400">ไอเดียริเริ่มเฉพาะหน่วย</span>`;
+                ? `<span class="text-amber-700 font-extrabold"><i class="fa-solid fa-circle-check"></i> ระบบยุทธศาสตร์หลัก (ระดมสมองซ้ำกัน)</span>` 
+                : `<span class="text-slate-600 dark:text-slate-400 font-semibold">ไอเดียริเริ่มเฉพาะหน่วย</span>`;
 
             const filtered = getFilteredData();
             renderDots(filtered);
             renderConsensus(filtered);
+            
+            // Refresh visual selections in table
+            const rows = document.querySelectorAll('#directoryTableBody tr');
+            renderTable(filtered);
         }
 
         let isDark = false;
